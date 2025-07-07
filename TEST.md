@@ -20,7 +20,7 @@ You'll see how images are downloaded, volumes and containers created, etc.
    Password: hODGZcFs
 
 🔌 Elasticsearch API endpoint: http://localhost:9200
-🔑 API key: Uko2eXk1Y0JQd19WX2N3dVdiY0c6YUpvMGdFc3lTSnZlU2FfRXF2Uk1jZw==
+🔑 API key: OThOSDJwY0I3QnlxdzlfMnVtZTc6TDlSUlpCVjRoQXdvb0oyODVNaVFEUQ==
 
 Learn more at https://github.com/elastic/start-local
 ```
@@ -39,18 +39,35 @@ Now you can add the following code to the `elastic-start-local/docker-compose.ym
         condition: service_healthy
       kibana:
         condition: service_healthy
-    image: quay.io/jupyter/base-notebook
+    build:
+      context: ..
+      dockerfile: notebook.dockerfile
     volumes:
       - ../lab:/lab
-    working_dir: /lab
     ports:
       - 127.0.0.1:8888:8888
     environment:
-      - ES_URL=http://elasticsearch:9200
-      - KB_URL=http://kibana:${KIBANA_LOCAL_PORT}
-      - ES_PASS=${ES_LOCAL_PASSWORD}
-    command: start-notebook.py --NotebookApp.token='elastic'
+      - ES_URL=${ES_URL}
+      - KB_URL=${KB_URL}
+      - ES_APIKEY=${ES_APIKEY}
+      - ES_USER=${ES_USER}
+      - ES_PASS=${ES_PASS}
 ```
+
+And the required new environment variables in the `elastic-start-local/.env` file:
+
+``ìni
+# local
+ES_URL=http://elasticsearch:9200
+KB_URL=http://kibana:${KIBANA_LOCAL_PORT}
+ES_APIKEY=${ES_LOCAL_API_KEY}
+ES_USER=elastic
+ES_PASS=${ES_LOCAL_PASSWORD}
+```
+
+>[!note]
+>If you want to use any other Elastic stack like a Elastic Cloud hosted environment
+>you can modify the environment variables in the `.env` accordingly.
 
 Stop and start the services with the scripts provided in the `elastic-start-local` folder to get the Jupyterlab environment ready at <http://localhost:8888/lab?token=elastic>.
 

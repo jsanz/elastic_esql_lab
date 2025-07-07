@@ -210,8 +210,9 @@ __marimo__/
 start-local
 elastic-start-local
 
-*/.ipynb_checkpoints
-*/.ipython
-*/.local
+.ipynb_checkpoints
+.ipython
+.local
 
-lab/places.parquet
+data/*
+*credentials*
