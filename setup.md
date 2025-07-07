@@ -62,8 +62,6 @@ just after the Kibana service is defined and before the `volumes` key.
       - ES_URL=${ES_URL}
       - KB_URL=${KB_URL}
       - ES_APIKEY=${ES_APIKEY}
-      - ES_USER=${ES_USER}
-      - ES_PASS=${ES_PASS}
 ```
 
 And the new required environment variables in the `elastic-start-local/.env` file:
@@ -73,8 +71,6 @@ And the new required environment variables in the `elastic-start-local/.env` fil
 ES_URL=http://elasticsearch:9200
 KB_URL=http://kibana:${KIBANA_LOCAL_PORT}
 ES_APIKEY=${ES_LOCAL_API_KEY}
-ES_USER=elastic
-ES_PASS=${ES_LOCAL_PASSWORD}
 ```
 
 ### Using a separate Elastic stack or Elastic Serverless
