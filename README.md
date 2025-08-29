@@ -1,6 +1,6 @@
-# FOSS4G Europe Elasticsearch and Kibana workshop
+# ES|QL Elasticsearch and Kibana workshop
 
-Materials for the [2025 FOSS4G Europe](https://2025.europe.foss4g.org/) workshop.
+Materials used for for the [2025 FOSS4G Europe](https://2025.europe.foss4g.org/) workshop.
 
 [Slides](https://ela.st/2025-foss4ge-workshop)
 
